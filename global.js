@@ -2,9 +2,6 @@
  * Created by Samuel Stephen and Nick Schetter on 7/9/15.
  */
 
-var displayQuestion = document.getElementById('question');
-var displayChoices = document.getElementById('choices');
-
 var quizArray = [
     {   question: "What is the name of Ned Stark's youngest daughter?",
         choices: ["(a) Yari", "(b) Arya", "(c) Darya", "(d) Catelyn"],
@@ -26,21 +23,42 @@ var quizArray = [
         rightAnswer: "a"
     }   ];
 
+var displayQuestion = document.getElementById('question');
+displayQuestion.innerText = quizArray[0].question;
+var displayChoices = document.getElementById('choices');
+displayChoices.innerText = quizArray[0].choices.join(', ');
+var score = 0;
 
-for (var i = 0; i < quizArray.length; i++) {
-  displayQuestion.innerText = quizArray[i].question;
-  displayChoices.innerText = quizArray[i].choices;
-}
+// for (var i = 0; i < quizArray.length; i++) {
+//   displayQuestion.innerText = quizArray[i].question;
+//   displayChoices.innerText = quizArray[i].choices;
+// }
 
 
 // returns text in input#answer field
 function given_answer() {
-  var answerGiven = document.getElementById('answer').value;
+  return document.getElementById('answer').value;
 }
 
+// returns true if input matches rightAnswer of the respective question
 function is_correct_answer(answer_text){
-  if (answer_text == qarray[i].a) {
-    return true;
+  if (answer_text == quizArray[0].rightAnswer) {
+    return true;    
   } 
     return false;
-};
+}
+
+// returns text in question_result
+function update_question_result(correct) {
+  if (correct == true) {
+    return document.getElementById("question_result").innerText = "Success!";
+  } else {
+    return document.getElementById("question_result").innerText = "Incorrect!";
+  }
+}
+
+// console.log(score);
+
+// score++;
+// return console.log(score);
+
