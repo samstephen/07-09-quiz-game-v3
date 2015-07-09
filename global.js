@@ -25,8 +25,13 @@ var quizArray = [
 
 var displayQuestion = document.getElementById('question');
 displayQuestion.innerText = quizArray[0].question;
+
 var displayChoices = document.getElementById('choices');
 displayChoices.innerText = quizArray[0].choices.join(', ');
+
+var buttonSubmitter = document.getElementById('submitter');
+buttonSubmitter.addEventListener('click', process_answer_submission)
+
 var score = 0;
 
 // for (var i = 0; i < quizArray.length; i++) {
@@ -57,8 +62,22 @@ function update_question_result(correct) {
   }
 }
 
+
+function process_answer_submission() {
+    var user_answer = given_answer();
+    update_question_result(is_correct_answer(user_answer));
+}
+
+
+
+
+
+
+
+
+//
+// console.log(score);
+// score++;
 // console.log(score);
 
-// score++;
-// return console.log(score);
 
