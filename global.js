@@ -70,6 +70,7 @@ function update_question_result(correct) {
 function process_answer_submission() {
     var user_answer = given_answer();
     update_question_result(is_correct_answer(user_answer));
+    buttonSubmitter.style.display = 'none';
 }
 
 var i = 1;
@@ -87,8 +88,9 @@ function clearAll(){
         if ( i == quizArray.length){
         displayResult.innerText = 
           "You answered " + score + " of " + quizArray.length + " questions correctly, good for " + (score/quizArray.length*100) + "%";
-        } 
+        }
         break;
-    }          
+    }
+    buttonSubmitter.style.display = 'inline-block';
 }
 
