@@ -74,17 +74,18 @@ function process_answer_submission() {
     update_question_result(is_correct_answer(user_answer));
 }
 
-
+var i = 1;
 function clearAll(){
     //Clear the #answer field and #question_result
     userInput.value = '';
     displayQuestionResult.innerText = '';
     // Set text of #question to next question
     // Set text of #choices to next choice
-    for (var i = 1; i < quizArray.length; i++) {
+    for (i; i < quizArray.length; i++) {
         displayQuestion.innerText = quizArray[i].question;
         displayChoices.innerText = quizArray[i].choices.join(', ');
-
+        i++;
+        break;
     }
 
 
