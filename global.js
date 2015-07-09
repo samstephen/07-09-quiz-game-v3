@@ -42,12 +42,7 @@ var buttonNext = document.getElementById('next');
 buttonNext.addEventListener('click', clearAll);
 
 var score = 0;
-
-// for (var i = 0; i < quizArray.length; i++) {
-//   displayQuestion.innerText = quizArray[i].question;
-//   displayChoices.innerText = quizArray[i].choices;
-// }
-
+var displayResult = document.getElementById('total_result');
 
 // returns text in input#answer field
 function given_answer() {
@@ -65,10 +60,11 @@ function is_correct_answer(answer_text){
 // returns text in question_result
 function update_question_result(correct) {
   if (correct == true) {
-    return displayQuestionResult.innerText = "Success!";
+    score++;
+    return displayQuestionResult.innerText = "Success!";    
   } else {
     return displayQuestionResult.innerText = "Incorrect!";
-  }
+  } 
 }
 
 function process_answer_submission() {
@@ -87,19 +83,12 @@ function clearAll(){
         displayQuestion.innerText = quizArray[i].question;
         displayChoices.innerText = quizArray[i].choices.join(', ');
         correctAnswer = quizArray[i].rightAnswer;
-        i++;
+        i++;        
+        if ( i == quizArray.length){
+        displayResult.innerText = 
+          "You answered " + score + " of " + quizArray.length + " questions correctly, good for " + (score/quizArray.length*100) + "%";
+        } 
         break;
-    }
+    }          
 }
-
-
-
-
-
-
-//
-// console.log(score);
-// score++;
-// console.log(score);
-
 
