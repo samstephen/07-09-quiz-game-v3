@@ -33,6 +33,8 @@ var userInput = document.getElementById('answer');
 
 var displayQuestionResult = document.getElementById("question_result");
 
+var currentQuestion = 0;
+
 var correctAnswer = quizArray[0].rightAnswer;
 
 var buttonSubmitter = document.getElementById('submitter');
@@ -73,24 +75,32 @@ function process_answer_submission() {
     buttonSubmitter.style.display = 'none';
 }
 
-var i = 1;
 function clearAll(){
-    //Clear the #answer field and #question_result
-    userInput.value = '';
-    displayQuestionResult.innerText = '';
-    // Set text of #question to next question
-    // Set text of #choices to next choice
-    for (i; i < quizArray.length; i++) {
-        displayQuestion.innerText = quizArray[i].question;
-        displayChoices.innerText = quizArray[i].choices.join(', ');
-        correctAnswer = quizArray[i].rightAnswer;
-        i++;        
-        if ( i == quizArray.length){
-        displayResult.innerText = 
-          "You answered " + score + " of " + quizArray.length + " questions correctly, good for " + (score/quizArray.length*100) + "%";
-        }
-        break;
+    // Advance to the next question.
+    currentQuestion++;
+
+    // If doing so means the current question is beyond the last question...
+    if (currentQuestion == quizArray.length){
+        displayResult.innerText =
+            "You answered " + score + " of " + quizArray.length + " questions correctly, good for " + (score/quizArray.length*100) + "%";
+        buttonSubmitter.style.display = 'none';
+        buttonNext.style.display = 'none';
     }
-    buttonSubmitter.style.display = 'inline-block';
+    // Otherwise, we still have questions left:
+    else {
+        //Clear the #answer field and #question_result
+        userInput.value = '';
+        displayQuestionResult.innerText = '';
+
+        // Set text of #question to next question
+        // Set text of #choices to next choice
+
+        displayQuestion.innerText = quizArray[currentQuestion].question;
+        displayChoices.innerText = quizArray[currentQuestion].choices.join(', ');
+
+        correctAnswer = quizArray[currentQuestion].rightAnswer;
+
+        buttonSubmitter.style.display = 'inline-block';
+    }
 }
 
