@@ -33,6 +33,8 @@ var userInput = document.getElementById('answer');
 
 var displayQuestionResult = document.getElementById("question_result");
 
+var correctAnswer = quizArray[0].rightAnswer;
+
 var buttonSubmitter = document.getElementById('submitter');
 buttonSubmitter.addEventListener('click', process_answer_submission);
 
@@ -54,9 +56,9 @@ function given_answer() {
 
 // returns true if input matches rightAnswer of the respective question
 function is_correct_answer(answer_text){
-  if (answer_text == quizArray[0].rightAnswer) {
-    return true;    
-  } 
+  if (answer_text == correctAnswer) {
+    return true;
+  }
     return false;
 }
 
@@ -84,11 +86,10 @@ function clearAll(){
     for (i; i < quizArray.length; i++) {
         displayQuestion.innerText = quizArray[i].question;
         displayChoices.innerText = quizArray[i].choices.join(', ');
+        correctAnswer = quizArray[i].rightAnswer;
         i++;
         break;
     }
-
-
 }
 
 
