@@ -3,8 +3,9 @@
  */
 
 var displayQuestion = document.getElementById('question');
+var displayChoices = document.getElementById('choices');
 
-var questionArray = [
+var quizArray = [
     {   question: "What is the name of Ned Stark's youngest daughter?",
         choices: ["(a) Yari", "(b) Arya", "(c) Darya", "(d) Catelyn"],
         rightAnswer: "b"
@@ -26,9 +27,20 @@ var questionArray = [
     }   ];
 
 
-
-
-for (var i = 0; i < questionArray.length; i++) {
-    displayQuestion.innerText = questionArray[i].question;
+for (var i = 0; i < quizArray.length; i++) {
+  displayQuestion.innerText = quizArray[i].question;
+  displayChoices.innerText = quizArray[i].choices;
 }
 
+
+// returns text in input#answer field
+function given_answer() {
+  var answerGiven = document.getElementById('answer').value;
+}
+
+function is_correct_answer(answer_text){
+  if (answer_text == qarray[i].a) {
+    return true;
+  } 
+    return false;
+};
