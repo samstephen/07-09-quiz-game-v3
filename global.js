@@ -29,8 +29,15 @@ displayQuestion.innerText = quizArray[0].question;
 var displayChoices = document.getElementById('choices');
 displayChoices.innerText = quizArray[0].choices.join(', ');
 
+var userInput = document.getElementById('answer');
+
+var displayQuestionResult = document.getElementById("question_result");
+
 var buttonSubmitter = document.getElementById('submitter');
-buttonSubmitter.addEventListener('click', process_answer_submission)
+buttonSubmitter.addEventListener('click', process_answer_submission);
+
+var buttonNext = document.getElementById('next');
+buttonNext.addEventListener('click', clearAll);
 
 var score = 0;
 
@@ -42,7 +49,7 @@ var score = 0;
 
 // returns text in input#answer field
 function given_answer() {
-  return document.getElementById('answer').value;
+  return userInput.value;
 }
 
 // returns true if input matches rightAnswer of the respective question
@@ -56,12 +63,11 @@ function is_correct_answer(answer_text){
 // returns text in question_result
 function update_question_result(correct) {
   if (correct == true) {
-    return document.getElementById("question_result").innerText = "Success!";
+    return displayQuestionResult.innerText = "Success!";
   } else {
-    return document.getElementById("question_result").innerText = "Incorrect!";
+    return displayQuestionResult.innerText = "Incorrect!";
   }
 }
-
 
 function process_answer_submission() {
     var user_answer = given_answer();
@@ -69,6 +75,20 @@ function process_answer_submission() {
 }
 
 
+function clearAll(){
+    //Clear the #answer field and #question_result
+    userInput.value = '';
+    displayQuestionResult.innerText = '';
+    // Set text of #question to next question
+    // Set text of #choices to next choice
+    for (var i = 1; i < quizArray.length; i++) {
+        displayQuestion.innerText = quizArray[i].question;
+        displayChoices.innerText = quizArray[i].choices.join(', ');
+
+    }
+
+
+}
 
 
 
