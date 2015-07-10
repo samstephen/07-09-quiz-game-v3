@@ -2,6 +2,9 @@
  * Created by Samuel Stephen and Nick Schetter on 7/9/15.
  */
 
+
+
+
 var quizArray = [
     {   question: "What is the name of Ned Stark's youngest daughter?",
         choices: ["(a) Yari", "(b) Arya", "(c) Darya", "(d) Catelyn"],
