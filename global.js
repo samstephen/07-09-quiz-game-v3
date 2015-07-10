@@ -2,9 +2,6 @@
  * Created by Samuel Stephen and Nick Schetter on 7/9/15.
  */
 
-
-
-
 var quizArray = [
     {   question: "What is the name of Ned Stark's youngest daughter?",
         choices: ["(a) Yari", "(b) Arya", "(c) Darya", "(d) Catelyn"],
@@ -51,25 +48,25 @@ var displayResult = document.getElementById('total_result');
 
 // returns text in input#answer field
 function given_answer() {
-  return userInput.value;
+    return userInput.value;
 }
 
 // returns true if input matches rightAnswer of the respective question
 function is_correct_answer(answer_text){
-  if (answer_text == correctAnswer) {
-    return true;
-  }
+    if (answer_text == correctAnswer) {
+        return true;
+    }
     return false;
 }
 
 // returns text in question_result
 function update_question_result(correct) {
-  if (correct == true) {
-    score++;
-    return displayQuestionResult.innerText = "Success!";    
-  } else {
-    return displayQuestionResult.innerText = "Incorrect!";
-  } 
+    if (correct == true) {
+        score++;
+        return displayQuestionResult.innerText = "Success!";
+    } else {
+        return displayQuestionResult.innerText = "Incorrect!";
+    }
 }
 
 function process_answer_submission() {
@@ -106,4 +103,3 @@ function clearAll(){
         buttonSubmitter.style.display = 'inline-block';
     }
 }
-
